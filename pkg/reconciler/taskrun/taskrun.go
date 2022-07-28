@@ -408,7 +408,7 @@ func (c *Reconciler) prepare(ctx context.Context, tr *v1beta1.TaskRun) (*v1beta1
 	// and they have not been initialized yet.
 	// FIXME(afrittoli) This resource specific logic will have to be replaced
 	// once we have a custom PipelineResource framework in place.
-	logger.Debugf("Cloud Events: %s", tr.Status.CloudEvents)
+	logger.Debugf("Cloud Events: %#v", tr.Status.CloudEvents)
 	cloudevent.InitializeCloudEvents(tr, rtr.Outputs)
 
 	return taskSpec, rtr, nil

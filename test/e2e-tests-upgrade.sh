@@ -29,7 +29,7 @@ PREVIOUS_PIPELINE_VERSION=v0.5.2
 
 # Script entry point.
 
-initialize $@
+#initialize $@
 
 header "Setting up environment"
 
@@ -48,10 +48,10 @@ install_pipeline_crd
 
 # Run the integration tests.
 failed=0
-go_test_e2e -timeout=20m ./test || failed=1
+go_test_e2e -tags=e2egit -timeout=20m ./test || failed=1
 
 # Run the post-integration tests.
-go_test_e2e -tags=examples -timeout=20m ./test/ || failed=1
+go_test_e2e -tags=e2egit -timeout=20m ./test/ || failed=1
 
 # Remove all the pipeline CRDs, and clean up the environment for next Scenario.
 uninstall_pipeline_crd
@@ -74,12 +74,12 @@ header "Upgrade to the current release of Tekton pipeline"
 install_pipeline_crd
 
 # Run the integration tests.
-go_test_e2e -timeout=20m ./test || failed=1
+go_test_e2e -tags=e2egit -timeout=20m ./test || failed=1
 
 # Run the post-integration tests. We do not need to install the resources again, since
 # they are installed before the upgrade. We verify if they still work, after going through
 # the upgrade.
-go_test_e2e -tags=examples -timeout=20m ./test/ || failed=1
+go_test_e2e -tags=e2egit -timeout=20m ./test/ || failed=1
 
 (( failed )) && fail_test
 

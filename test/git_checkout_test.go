@@ -1,5 +1,5 @@
-//go:build e2e
-// +build e2e
+//go:build e2egit
+// +build e2egit
 
 /*
 Copyright 2019 The Tekton Authors

@@ -1,5 +1,5 @@
-//go:build conformance || e2e || examples
-// +build conformance e2e examples
+//go:build conformance || e2e || examples || e2egit
+// +build conformance e2e examples e2egit
 
 /*
 Copyright 2019 The Tekton Authors
