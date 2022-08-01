@@ -3,22 +3,22 @@ module github.com/tektoncd/pipeline
 go 1.17
 
 require (
-	github.com/cloudevents/sdk-go/v2 v2.5.0
-	github.com/containerd/containerd v1.5.10
+	github.com/cloudevents/sdk-go/v2 v2.10.1
+	github.com/containerd/containerd v1.6.6
 	github.com/google/go-cmp v0.5.8
 	github.com/google/go-containerregistry v0.8.1-0.20220216220642-00c59d91847c
 	github.com/google/go-containerregistry/pkg/authn/k8schain v0.0.0-20220328141311-efc62d802606
 	github.com/google/uuid v1.3.0
-	github.com/hashicorp/errwrap v1.0.0
+	github.com/hashicorp/errwrap v1.1.0
 	github.com/hashicorp/go-multierror v1.1.1
 	github.com/hashicorp/golang-lru v0.5.4
-	github.com/jenkins-x/go-scm v1.11.16
+	github.com/jenkins-x/go-scm v1.11.19
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/opencontainers/image-spec v1.0.3-0.20220114050600-8b9d41f48198
 	github.com/pkg/errors v0.9.1
 	github.com/tektoncd/plumbing v0.0.0-20220329085922-d765a5cba75f
 	go.opencensus.io v0.23.0
-	go.uber.org/zap v1.19.1
+	go.uber.org/zap v1.21.0
 	golang.org/x/oauth2 v0.0.0-20220223155221-ee480838109b
 	gomodules.xyz/jsonpatch/v2 v2.2.0
 	k8s.io/api v0.23.5
@@ -30,6 +30,8 @@ require (
 	knative.dev/pkg v0.0.0-20220329144915-0a1ec2e0d46c
 	sigs.k8s.io/yaml v1.3.0
 )
+
+require github.com/benbjohnson/clock v1.1.0 // indirect
 
 require (
 	cloud.google.com/go/compute v1.5.0 // indirect
@@ -109,13 +111,13 @@ require (
 	github.com/prometheus/client_golang v1.11.1 // indirect
 	github.com/prometheus/client_model v0.2.0 // indirect
 	github.com/prometheus/common v0.32.1 // indirect
-	github.com/prometheus/procfs v0.6.0 // indirect
+	github.com/prometheus/procfs v0.7.3 // indirect
 	github.com/prometheus/statsd_exporter v0.21.0 // indirect
 	github.com/shurcooL/githubv4 v0.0.0-20190718010115-4ba037080260 // indirect
 	github.com/shurcooL/graphql v0.0.0-20181231061246-d48a9a75455f // indirect
 	github.com/sirupsen/logrus v1.8.1 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/stretchr/testify v1.7.0 // indirect
+	github.com/stretchr/testify v1.8.0 // indirect
 	github.com/tektoncd/resolution v0.0.0-20220331203013-e4203c70c5eb
 	github.com/vbatts/tar-split v0.11.2 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
@@ -126,7 +128,7 @@ require (
 	golang.org/x/mod v0.5.1 // indirect
 	golang.org/x/net v0.0.0-20220225172249-27dd8689420f // indirect
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
-	golang.org/x/sys v0.0.0-20220227234510-4e6760a101f9 // indirect
+	golang.org/x/sys v0.0.0-20220412211240-33da011f77ad // indirect
 	golang.org/x/term v0.0.0-20210927222741-03fcf44c2211 // indirect
 	golang.org/x/text v0.3.7 // indirect
 	golang.org/x/time v0.0.0-20220224211638-0e9765cccd65 // indirect
