@@ -1,5 +1,8 @@
-defaultBaseImage: ghcr.io/distroless/static
+#defaultBaseImage: ghcr.io/distroless/static
+defaultBaseImage: build-harbor.alauda.cn/test/ghcr.io/distroless/static:latest
 baseImageOverrides:
   # git-init uses a base image that includes Git, and supports running either
   # as root or as user nonroot with UID 65532.
-  github.com/tektoncd/pipeline/cmd/git-init: ghcr.io/distroless/git
+#  github.com/tektoncd/pipeline/cmd/git-init: ghcr.io/distroless/git
+    github.com/tektoncd/pipeline/cmd/git-init: build-harbor.alauda.cn/test/ghcr.io/distroless/git:latest
+
