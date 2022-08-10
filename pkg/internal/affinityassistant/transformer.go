@@ -33,27 +33,36 @@ func NewTransformer(_ context.Context, annotations map[string]string) pod.Transf
 		// affinity is wanted, that should be added on the Affinity Assistant pod unless
 		// assistant is disabled. When Affinity Assistant is disabled, an affinityAssistantName is not set.
 		if affinityAssistantName := annotations[workspace.AnnotationAffinityAssistantName]; affinityAssistantName != "" {
-			p.Spec.Affinity = nodeAffinityUsingAffinityAssistant(affinityAssistantName)
+			mergeAffinityWithAffinityAssistant(p.Spec.Affinity,affinityAssistantName)
 		}
 		return p, nil
 	}
 }
 
-// nodeAffinityUsingAffinityAssistant achieves Node Affinity for taskRun pods
-// sharing PVC workspace by setting PodAffinity so that taskRuns is
-// scheduled to the Node were the Affinity Assistant pod is scheduled.
-func nodeAffinityUsingAffinityAssistant(affinityAssistantName string) *corev1.Affinity {
-	return &corev1.Affinity{
-		PodAffinity: &corev1.PodAffinity{
-			RequiredDuringSchedulingIgnoredDuringExecution: []corev1.PodAffinityTerm{{
-				LabelSelector: &metav1.LabelSelector{
-					MatchLabels: map[string]string{
-						workspace.LabelInstance:  affinityAssistantName,
-						workspace.LabelComponent: workspace.ComponentNameAffinityAssistant,
-					},
-				},
-				TopologyKey: "kubernetes.io/hostname",
-			}},
+func mergeAffinityWithAffinityAssistant(affinity *corev1.Affinity, affinityAssistantName string){
+	podAffinityTerm := podAffinityTermUsingAffinityAssistant(affinityAssistantName)
+
+	if affinity == nil{
+		affinity = &corev1.Affinity{}
+	}
+	if affinity.PodAffinity == nil{
+		affinity.PodAffinity = &corev1.PodAffinity{}
+	}
+
+	affinity.PodAffinity.RequiredDuringSchedulingIgnoredDuringExecution =
+		append(affinity.PodAffinity.RequiredDuringSchedulingIgnoredDuringExecution, *podAffinityTerm)
+}
+
+// podAffinityTermUsingAffinityAssistant achieves pod Affinity for taskRun pods
+// so that taskRuns is scheduled to the Node were the Affinity Assistant pod
+// is scheduled.
+func podAffinityTermUsingAffinityAssistant(affinityAssistantName string) *corev1.PodAffinityTerm {
+	return &corev1.PodAffinityTerm{LabelSelector: &metav1.LabelSelector{
+		MatchLabels: map[string]string{
+			workspace.LabelInstance:  affinityAssistantName,
+			workspace.LabelComponent: workspace.ComponentNameAffinityAssistant,
 		},
+	},
+		TopologyKey: "kubernetes.io/hostname",
 	}
 }
