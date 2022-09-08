@@ -1,12 +1,13 @@
 module github.com/tektoncd/pipeline
 
-go 1.17
+go 1.18
 
 require (
 	github.com/ahmetb/gen-crd-api-reference-docs v0.3.1-0.20220720053627-e327d0730470 // Waiting for https://github.com/ahmetb/gen-crd-api-reference-docs/pull/43/files to merge
-	github.com/cloudevents/sdk-go/v2 v2.10.1
-	github.com/containerd/containerd v1.5.13
-	github.com/google/go-cmp v0.5.8
+	github.com/cloudevents/sdk-go/v2 v2.11.0
+	github.com/containerd/containerd v1.6.8
+	github.com/go-git/go-git/v5 v5.4.2
+	github.com/google/go-cmp v0.5.9
 	github.com/google/go-containerregistry v0.8.1-0.20220216220642-00c59d91847c
 	github.com/google/go-containerregistry/pkg/authn/k8schain v0.0.0-20220328141311-efc62d802606
 	github.com/google/uuid v1.3.0
@@ -17,22 +18,38 @@ require (
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/opencontainers/image-spec v1.0.3-0.20220114050600-8b9d41f48198
 	github.com/pkg/errors v0.9.1
-	github.com/tektoncd/plumbing v0.0.0-20220728121531-8a725746af4f
+	github.com/tektoncd/plumbing v0.0.0-20220817140952-3da8ce01aeeb
 	go.opencensus.io v0.23.0
-	go.uber.org/zap v1.21.0
+	go.uber.org/zap v1.23.0
 	golang.org/x/oauth2 v0.0.0-20220223155221-ee480838109b
 	gomodules.xyz/jsonpatch/v2 v2.2.0
-	k8s.io/api v0.23.5
-	k8s.io/apimachinery v0.23.5
-	k8s.io/client-go v0.23.5
-	k8s.io/code-generator v0.23.5
+	k8s.io/api v0.23.9
+	k8s.io/apimachinery v0.23.9
+	k8s.io/client-go v0.23.9
+	k8s.io/code-generator v0.23.9
 	k8s.io/klog v1.0.0
 	k8s.io/kube-openapi v0.0.0-20220124234850-424119656bbf
-	knative.dev/pkg v0.0.0-20220329144915-0a1ec2e0d46c
+	knative.dev/pkg v0.0.0-20220818004048-4a03844c0b15
 	sigs.k8s.io/yaml v1.3.0
 )
 
 require github.com/benbjohnson/clock v1.1.0 // indirect
+
+require k8s.io/utils v0.0.0-20220210201930-3a6ce19ff2f9
+
+require (
+	github.com/Microsoft/go-winio v0.5.1 // indirect
+	github.com/ProtonMail/go-crypto v0.0.0-20210428141323-04723f9f07d7 // indirect
+	github.com/acomagu/bufpipe v1.0.3 // indirect
+	github.com/emirpasic/gods v1.12.0 // indirect
+	github.com/go-git/gcfg v1.5.0 // indirect
+	github.com/go-git/go-billy/v5 v5.3.1
+	github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99 // indirect
+	github.com/kevinburke/ssh_config v0.0.0-20201106050909-4977a11b4351 // indirect
+	github.com/sergi/go-diff v1.1.0 // indirect
+	github.com/xanzy/ssh-agent v0.3.0 // indirect
+	gopkg.in/warnings.v0 v0.1.2 // indirect
+)
 
 require (
 	cloud.google.com/go/compute v1.5.0 // indirect
@@ -76,7 +93,7 @@ require (
 	github.com/docker/distribution v2.8.0+incompatible // indirect
 	github.com/docker/docker v20.10.12+incompatible // indirect
 	github.com/docker/docker-credential-helpers v0.6.4 // indirect
-	github.com/emicklei/go-restful v2.15.0+incompatible // indirect
+	github.com/emicklei/go-restful v2.16.0+incompatible // indirect
 	github.com/evanphx/json-patch v4.12.0+incompatible // indirect
 	github.com/evanphx/json-patch/v5 v5.6.0 // indirect
 	github.com/go-kit/log v0.1.0 // indirect
@@ -112,7 +129,7 @@ require (
 	github.com/prometheus/client_golang v1.11.1 // indirect
 	github.com/prometheus/client_model v0.2.0 // indirect
 	github.com/prometheus/common v0.32.1 // indirect
-	github.com/prometheus/procfs v0.6.0 // indirect
+	github.com/prometheus/procfs v0.7.3 // indirect
 	github.com/prometheus/statsd_exporter v0.21.0 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/shurcooL/githubv4 v0.0.0-20190718010115-4ba037080260 // indirect
@@ -120,7 +137,6 @@ require (
 	github.com/sirupsen/logrus v1.8.1 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/stretchr/testify v1.8.0 // indirect
-	github.com/tektoncd/resolution v0.0.0-20220331203013-e4203c70c5eb
 	github.com/vbatts/tar-split v0.11.2 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
 	go.uber.org/automaxprocs v1.4.0 // indirect
@@ -144,10 +160,9 @@ require (
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/apiextensions-apiserver v0.23.4 // indirect
-	k8s.io/gengo v0.0.0-20220307231824-4627b89bbf1b // indirect
-	k8s.io/klog/v2 v2.60.1-0.20220317184644-43cc75f9ae89 // indirect
-	k8s.io/utils v0.0.0-20220210201930-3a6ce19ff2f9 // indirect
+	k8s.io/apiextensions-apiserver v0.23.9 // indirect
+	k8s.io/gengo v0.0.0-20220613173612-397b4ae3bce7 // indirect
+	k8s.io/klog/v2 v2.70.2-0.20220707122935-0990e81f1a8f // indirect
 	sigs.k8s.io/json v0.0.0-20211208200746-9f7c6b3444d2 // indirect
 	sigs.k8s.io/structured-merge-diff/v4 v4.2.1 // indirect
 )
