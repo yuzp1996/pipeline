@@ -63,3 +63,7 @@ docs/pipeline-api.md.backup
 
 # Ignore .env files
 /.env
+
+# development
+HOWTODEVELOP.md
+lab
